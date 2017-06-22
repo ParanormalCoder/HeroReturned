@@ -18,9 +18,15 @@ export class HeroDetailComponent implements OnInit {
       private heroService: HeroService,
       private route: ActivatedRoute,
       private location: Location
-      ) { }
+      ) { 
+      }
 
   ngOnInit() {
+      this.route.queryParams
+      .subscribe((params: Params) => {
+         !!params['isback'] && (this.isback = !!(+params['isback']));
+         console.log(params);
+      });
       this.route.params
       .switchMap((params: Params) => this.heroService.getHero(+params['id']))
       .subscribe(hero => this.hero = hero);
@@ -32,6 +38,10 @@ export class HeroDetailComponent implements OnInit {
 
   consoleInputs(): void {
     console.log(this);
+  }
+
+  hideDetails(){
+    this.hero = null;
   }
 
 }

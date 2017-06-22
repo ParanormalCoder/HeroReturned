@@ -12,9 +12,14 @@ export class DashboardComponent implements OnInit {
   constructor(private heroService: HeroService) { }
 
   heroes : Hero[];
-
+  selectedHero: Hero;
+  
   ngOnInit() {
       this.heroService.getHeroesAsync().then(heroes => this.heroes = heroes.slice(1, 5));
+  }
+
+  onSelect(hero) {
+    this.selectedHero = hero;
   }
 
 }
