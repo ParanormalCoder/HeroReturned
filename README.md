@@ -1,4 +1,4 @@
-# Hero
+# Hero Returned
 
 This project is designed from the Hero Application under AngularJs2
 
